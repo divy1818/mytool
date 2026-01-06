@@ -56,79 +56,56 @@ export default function Home() {
   };
 
   return (
-    < main className = "flex min-h-screen flex-col items-center justify-center p-8 bg-gray-100" >
-      < div className = "w-full max-w-4xl bg-white rounded-lg shadow-xl p-8" >
-        < h1 className = "text-4xl font-bold text-center text-gray-800 mb-2" > Free Background Remover < /h1>
-          < p className = "text-center text-gray-500 mb-8" >
-          Powered by < code className = "font-mono bg-gray-200 p-1 rounded" > @imgly/background-removal < /code>.Processing happens in your browser. <
-          /p>
+    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gray-100">
+      <div className="w-full max-w-4xl bg-white rounded-lg shadow-xl p-8">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-2">Free Background Remover</h1>
+          <p className="text-center text-gray-500 mb-8">
+          Powered by <code className="font-mono bg-gray-200 p-1 rounded">@imgly/background-removal</code>. Processing happens in your browser.
+          </p>
 
-          < div className = "grid grid-cols-1 md:grid-cols-2 gap-8" >
-            { /* Upload Section */ }
-            < div className = "flex flex-col items-center" >
-              < label htmlFor = "file-upload" className = "w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-50" >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Upload Section */}
+            <div className="flex flex-col items-center">
+              <label htmlFor="file-upload" className="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-50">
                 {
                   originalImage ? (
-                    <img src = {
-                      originalImage
-                    }
-                    alt = "Original" className = "max-h-full max-w-full" / >
+                    <img src={originalImage} alt="Original" className="max-h-full max-w-full" />
                   ) : (
-                    <span className = "text-gray-400" > Click to upload an image < /span>
+                    <span className="text-gray-400">Click to upload an image</span>
                   )
                 }
-                < /label>
-                < input id = "file-upload" type = "file" className = "hidden" accept = "image/*" onChange = {
-                  handleFileChange
-                }
-                />
-                < button onClick = {
-                  processImage
-                }
-                disabled = {!originalImage || isLoading
-                }
-                className = "mt-4 w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all" >
-                  {
-                    isLoading ? "Processing..." : "Remove Background"
-                  }
-                  < /button>
-                  < /div>
+                </label>
+                <input id="file-upload" type="file" className="hidden" accept="image/*" onChange={handleFileChange} />
+                <button onClick={processImage} disabled={!originalImage || isLoading} className="mt-4 w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all">
+                  {isLoading ? "Processing..." : "Remove Background"}
+                  </button>
+                  </div>
 
-                  { /* Result Section */ }
-                  < div className = "flex flex-col items-center" >
-                    < div className = "w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50" >
+                  {/* Result Section */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-full h-64 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50">
                       {
                         processedImage ? (
-                          <img src = {
-                            processedImage
-                          }
-                          alt = "Background Removed" className = "max-h-full max-w-full" / >
+                          <img src={processedImage} alt="Background Removed" className="max-h-full max-w-full" />
                         ) : (
-                          <span className = "text-gray-400" > Processed image will appear here < /span>
+                          <span className="text-gray-400">Processed image will appear here</span>
                         )
                       }
-                      < /div>
-                      < button onClick = {
-                        downloadImage
-                      }
-                      disabled = {!processedImage
-                      }
-                      className = "mt-4 w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all" >
+                      </div>
+                      <button onClick={downloadImage} disabled={!processedImage} className="mt-4 w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-all">
                         Download Image
-                        < /button>
-                        < /div>
-                        < /div>
+                        </button>
+                        </div>
+                        </div>
 
                         {
                           error && (
-                            <div className = "mt-6 text-center text-red-600 bg-red-100 p-3 rounded-lg" >
-                              <p> {
-                                error
-                              } < /p>
-                              < /div>
+                            <div className="mt-6 text-center text-red-600 bg-red-100 p-3 rounded-lg">
+                              <p>{error}</p>
+                              </div>
                           )
                         }
-                        < /div>
-                        < /main>
+                        </div>
+                        </main>
                   );
                 }
