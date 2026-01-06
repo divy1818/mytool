@@ -1,0 +1,7 @@
+.firebase
+.next
+.vercel
+*.log
+*.tsbuildinfo
+next-env.d.ts
+node_modules
